@@ -2,8 +2,6 @@
 
 A clean, educational fraud detection system demonstrating backend architecture, rules engines, and API design.
 
-**Built for Capital One Assessment Centre**
-
 ---
 
 ## Overview
@@ -15,7 +13,7 @@ CreditGuard evaluates credit card transactions using a configurable rule-based e
 - **Type Safety**: Pydantic (backend) and TypeScript (frontend)
 - **Explainability**: Clear reasons for each fraud flag
 
-## ✨ Key Features
+## Key Features
 
 - **Single Transaction Evaluation**: Real-time fraud assessment with instant feedback
 - **Transaction History**: Track and review past evaluations
@@ -272,25 +270,6 @@ Upload sample-transactions.json (8 transactions)
 
 ---
 
-## Presentation Talking Points
-
-### Architecture Discussion:
-- Why separate rules from engine?
-- How would you add a new rule?
-- Trade-offs: rules vs ML models
-
-### Scalability:
-- How would this handle 10,000 TPS?
-- Where are the bottlenecks?
-- What persistence layer would you add?
-
-### Production Readiness:
-- What's missing for production?
-- How would you monitor this?
-- Security considerations?
-
----
-
 ## Built With
 
 - FastAPI for clean REST APIs
@@ -298,7 +277,3 @@ Upload sample-transactions.json (8 transactions)
 - React + TypeScript for type-safe frontend
 - Strategy pattern for extensible rules
 
----
-
-**Author**: Built for Capital One Assessment Centre
-**Purpose**: Demonstrate clean architecture, engineering reasoning, and communication skills
