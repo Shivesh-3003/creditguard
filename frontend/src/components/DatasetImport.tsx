@@ -58,7 +58,34 @@ export default function DatasetImport({ onBatchEvaluate }: DatasetImportProps) {
       <p style={styles.description}>Upload a JSON file with transaction data for bulk analysis</p>
 
       <div style={styles.uploadSection}>
-        <label htmlFor="file-upload" style={styles.uploadButton}>
+        <label
+          htmlFor="file-upload"
+          style={{
+            ...styles.uploadButton,
+            opacity: isProcessing ? 0.6 : 1,
+            cursor: isProcessing ? 'not-allowed' : 'pointer',
+          }}
+          onMouseEnter={(e) => {
+            if (!isProcessing) {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,72,121,0.35)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,72,121,0.25)';
+          }}
+          onMouseDown={(e) => {
+            if (!isProcessing) {
+              e.currentTarget.style.transform = 'translateY(0) scale(0.98)';
+            }
+          }}
+          onMouseUp={(e) => {
+            if (!isProcessing) {
+              e.currentTarget.style.transform = 'translateY(-2px) scale(1)';
+            }
+          }}
+        >
           {isProcessing ? 'Processing...' : 'Choose JSON File'}
         </label>
         <input
@@ -80,11 +107,10 @@ export default function DatasetImport({ onBatchEvaluate }: DatasetImportProps) {
       {summary && (
         <div style={styles.results}>
           <h3 style={styles.resultsHeading}>Batch Results</h3>
+          <p style={styles.totalText}>
+            <strong>{summary.total}</strong> transactions evaluated
+          </p>
           <div style={styles.summaryGrid}>
-            <div style={styles.summaryCard}>
-              <div style={styles.summaryNumber}>{summary.total}</div>
-              <div style={styles.summaryLabel}>Total</div>
-            </div>
             <div style={{ ...styles.summaryCard, borderLeft: '3px solid #D4002A' }}>
               <div style={{ ...styles.summaryNumber, color: '#D4002A' }}>{summary.high}</div>
               <div style={styles.summaryLabel}>High Risk</div>
@@ -177,12 +203,18 @@ const styles = {
     fontWeight: 600,
     color: '#004879',
   },
+  totalText: {
+    fontSize: '15px',
+    color: '#004879',
+    margin: '0 0 16px 0',
+  },
   summaryGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+    display: 'flex',
     gap: '12px',
+    justifyContent: 'space-between',
   },
   summaryCard: {
+    flex: 1,
     padding: '16px',
     backgroundColor: '#F7F7F7',
     borderRadius: '8px',

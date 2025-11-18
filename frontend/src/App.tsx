@@ -91,7 +91,7 @@ function App() {
           <DatasetImport onBatchEvaluate={handleBatchEvaluate} />
         </div>
 
-        {/* Transaction History - spans full width */}
+        {/* Transaction History */}
         <div style={styles.gridItemFull}>
           <TransactionHistory history={history} onClear={handleClearHistory} />
         </div>
@@ -112,7 +112,6 @@ const styles = {
     color: "#ffffff",
     padding: "32px 24px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    borderRadius: "15px",
   },
   headerContent: {
     maxWidth: "1400px",

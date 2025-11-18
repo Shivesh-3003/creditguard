@@ -80,7 +80,15 @@ class ImpossibleTravelRule(BaseRule):
             return None
 
         # Calculate required speed
-        required_speed = distance / time_diff if time_diff > 0 else float('inf')
+        if time_diff <= 0:
+            # Negative or zero time = backdated or simultaneous transaction
+            return RuleTrigger(
+                rule_name=self.name,
+                reason=f"Suspicious timing: Transaction in {current_country} is backdated or simultaneous with previous {last_country} transaction (time difference: {time_diff:.1f} hours). Possible timestamp manipulation.",
+                score_contribution=self.score_weight
+            )
+
+        required_speed = distance / time_diff
 
         # Check if travel is impossible
         if required_speed > self.MAX_SPEED_MPH:

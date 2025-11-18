@@ -101,11 +101,29 @@ export default function TransactionForm({ onSubmit, isLoading }: TransactionForm
         disabled={isLoading}
         style={{
           ...styles.button,
-          opacity: isLoading ? 0.7 : 1,
+          opacity: isLoading ? 0.6 : 1,
           cursor: isLoading ? 'not-allowed' : 'pointer',
         }}
-        onMouseEnter={(e) => !isLoading && (e.currentTarget.style.transform = 'translateY(-2px)')}
-        onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+        onMouseEnter={(e) => {
+          if (!isLoading) {
+            e.currentTarget.style.transform = 'translateY(-2px)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(212,0,42,0.35)';
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(212,0,42,0.25)';
+        }}
+        onMouseDown={(e) => {
+          if (!isLoading) {
+            e.currentTarget.style.transform = 'translateY(0) scale(0.98)';
+          }
+        }}
+        onMouseUp={(e) => {
+          if (!isLoading) {
+            e.currentTarget.style.transform = 'translateY(-2px) scale(1)';
+          }
+        }}
       >
         {isLoading ? 'Evaluating...' : 'Evaluate Transaction'}
       </button>
