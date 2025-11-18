@@ -5,7 +5,7 @@
     "currency": "USD",
     "country": "US",
     "merchant": "Coffee Shop",
-    "timestamp": "2024-01-15T14:30:00"
+    "timestamp": "2024-01-15T14:30:00Z"
   },
   {
     "user_id": "user_002",
@@ -13,7 +13,7 @@
     "currency": "USD",
     "country": "US",
     "merchant": "Test Merchant",
-    "timestamp": "2024-01-15T03:15:00"
+    "timestamp": "2024-01-15T03:15:00Z"
   },
   {
     "user_id": "user_003",
@@ -21,7 +21,7 @@
     "currency": "USD",
     "country": "US",
     "merchant": "Electronics Store",
-    "timestamp": "2024-01-15T10:00:00"
+    "timestamp": "2024-01-15T10:00:00Z"
   },
   {
     "user_id": "user_003",
@@ -29,7 +29,7 @@
     "currency": "GBP",
     "country": "GB",
     "merchant": "London Shop",
-    "timestamp": "2024-01-15T10:20:00"
+    "timestamp": "2024-01-15T10:20:00Z"
   },
   {
     "user_id": "user_004",
@@ -37,7 +37,7 @@
     "currency": "USD",
     "country": "XX",
     "merchant": "Jewelry Store",
-    "timestamp": "2024-01-15T15:00:00"
+    "timestamp": "2024-01-15T15:00:00Z"
   },
   {
     "user_id": "user_005",
@@ -45,7 +45,7 @@
     "currency": "USD",
     "country": "US",
     "merchant": "Unknown Store",
-    "timestamp": "2024-01-15T02:30:00"
+    "timestamp": "2024-01-15T02:30:00Z"
   },
   {
     "user_id": "user_006",
@@ -53,7 +53,7 @@
     "currency": "USD",
     "country": "US",
     "merchant": "Gas Station",
-    "timestamp": "2024-01-15T16:45:00"
+    "timestamp": "2024-01-15T16:45:00Z"
   },
   {
     "user_id": "user_007",
@@ -61,6 +61,6 @@
     "currency": "USD",
     "country": "CA",
     "merchant": "Department Store",
-    "timestamp": "2024-01-15T12:00:00"
+    "timestamp": "2024-01-15T12:00:00Z"
   }
 ]

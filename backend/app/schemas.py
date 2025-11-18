@@ -2,8 +2,8 @@
 Pydantic schemas for request/response validation.
 Clean data models with type safety.
 """
-from datetime import datetime
-from pydantic import BaseModel, Field
+from datetime import datetime, timezone
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
 
 
@@ -14,7 +14,17 @@ class Transaction(BaseModel):
     currency: str = Field(..., min_length=3, max_length=3, description="ISO currency code")
     country: str = Field(..., min_length=2, max_length=2, description="ISO country code")
     merchant: str = Field(..., description="Merchant name or category")
-    timestamp: datetime = Field(default_factory=datetime.now, description="Transaction timestamp")
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), description="Transaction timestamp (UTC)")
+
+    @field_validator('timestamp')
+    @classmethod
+    def validate_timezone(cls, v: datetime) -> datetime:
+        """Ensure timestamp is timezone-aware and convert to UTC."""
+        if v.tzinfo is None:
+            # Naive datetime - assume UTC
+            return v.replace(tzinfo=timezone.utc)
+        # Convert to UTC if in different timezone
+        return v.astimezone(timezone.utc)
 
     class Config:
         json_schema_extra = {
@@ -24,7 +34,7 @@ class Transaction(BaseModel):
                 "currency": "USD",
                 "country": "US",
                 "merchant": "Electronics Store",
-                "timestamp": "2024-01-15T10:30:00"
+                "timestamp": "2024-01-15T10:30:00Z"
             }
         }
 
@@ -42,4 +52,4 @@ class FraudResult(BaseModel):
     risk_level: str  # LOW, MEDIUM, HIGH
     total_score: int
     triggered_rules: List[RuleTrigger]
-    timestamp: datetime = Field(default_factory=datetime.now)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

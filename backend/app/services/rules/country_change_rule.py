@@ -10,8 +10,19 @@ from typing import Optional, Set
 class CountryChangeRule(BaseRule):
     """Detects transactions from high-risk countries."""
 
-    # Sample high-risk countries (simplified for demo)
-    HIGH_RISK_COUNTRIES: Set[str] = {"XX", "YY", "ZZ"}  # Placeholder codes
+    # Sample high-risk countries
+    HIGH_RISK_COUNTRIES: Set[str] = {
+    "AF",  # Afghanistan
+    "IR",  # Iran
+    "IQ",  # Iraq
+    "SY",  # Syria
+    "KP",  # North Korea
+    "SD",  # Sudan
+    "SO",  # Somalia
+    "CU",  # Cuba
+    "YE",  # Yemen
+    "LY",  # Libya
+}
 
     def __init__(self, score_weight: int = 40):
         super().__init__(score_weight)
