@@ -1,0 +1,66 @@
+[
+  {
+    "user_id": "user_001",
+    "amount": 47.23,
+    "currency": "USD",
+    "country": "US",
+    "merchant": "Coffee Shop",
+    "timestamp": "2024-01-15T14:30:00"
+  },
+  {
+    "user_id": "user_002",
+    "amount": 5.00,
+    "currency": "USD",
+    "country": "US",
+    "merchant": "Test Merchant",
+    "timestamp": "2024-01-15T03:15:00"
+  },
+  {
+    "user_id": "user_003",
+    "amount": 1500.00,
+    "currency": "USD",
+    "country": "US",
+    "merchant": "Electronics Store",
+    "timestamp": "2024-01-15T10:00:00"
+  },
+  {
+    "user_id": "user_003",
+    "amount": 200.00,
+    "currency": "GBP",
+    "country": "GB",
+    "merchant": "London Shop",
+    "timestamp": "2024-01-15T10:20:00"
+  },
+  {
+    "user_id": "user_004",
+    "amount": 2500.00,
+    "currency": "USD",
+    "country": "XX",
+    "merchant": "Jewelry Store",
+    "timestamp": "2024-01-15T15:00:00"
+  },
+  {
+    "user_id": "user_005",
+    "amount": 10.00,
+    "currency": "USD",
+    "country": "US",
+    "merchant": "Unknown Store",
+    "timestamp": "2024-01-15T02:30:00"
+  },
+  {
+    "user_id": "user_006",
+    "amount": 89.99,
+    "currency": "USD",
+    "country": "US",
+    "merchant": "Gas Station",
+    "timestamp": "2024-01-15T16:45:00"
+  },
+  {
+    "user_id": "user_007",
+    "amount": 750.00,
+    "currency": "USD",
+    "country": "CA",
+    "merchant": "Department Store",
+    "timestamp": "2024-01-15T12:00:00"
+  }
+]
