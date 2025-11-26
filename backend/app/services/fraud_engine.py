@@ -18,11 +18,21 @@ class FraudEngine:
     """
     Main fraud detection engine.
     Evaluates transactions against configured rules and produces risk assessment.
+    Implements Singleton pattern to ensure only one instance exists.
     """
+    _instance = None
+    _initialized = False
+
+    def __new__(cls):
+        """Singleton pattern: Ensure only one instance exists."""
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
     def __init__(self):
         """
         Initialize engine with comprehensive rule set.
+        Only runs once due to singleton pattern.
 
         Rules ordered by severity/importance:
         1. Impossible Travel (70) - Strong fraud signal
@@ -32,6 +42,10 @@ class FraudEngine:
         5. High Amount (30) - Large transaction
         6. Unusual Time (25) - Suspicious hours
         """
+        # Prevent re-initialization of singleton
+        if FraudEngine._initialized:
+            return
+
         self.rules: List[BaseRule] = [
             # Critical fraud signals
             ImpossibleTravelRule(score_weight=70),
@@ -45,6 +59,8 @@ class FraudEngine:
             HighAmountRule(threshold=1000.0, score_weight=30),
             UnusualTimeRule(score_weight=25),
         ]
+
+        FraudEngine._initialized = True
 
     def add_rule(self, rule: BaseRule) -> None:
         """Add a custom rule to the engine (extensibility)."""

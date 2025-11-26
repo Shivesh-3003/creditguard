@@ -1,6 +1,5 @@
 /**
  * Main App component - Card Dashboard Design
- * Professional fintech layout with transaction history and batch processing
  */
 import { useState } from "react";
 import TransactionForm from "./components/TransactionForm";
